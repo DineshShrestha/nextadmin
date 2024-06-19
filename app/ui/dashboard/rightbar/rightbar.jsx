@@ -1,8 +1,38 @@
+import Image from "next/image"
 import styles from "./rightbar.module.css"
+import { MdPlayCircleFilled, MdReadMore } from "react-icons/md"
 const Rightbar = () => {
     return(
         <div className={styles.container}>
-            Rightbar
+            <div className={styles.item}>
+                <div className={styles.bgContainer}>
+                    <Image className={styles.bg} src="/astronaut.png" alt="" fill/>
+                </div>
+                <div className={styles.text}>
+                    <span className={styles.notification}>Available Now</span>
+                    <h3  className={styles.title}>How to use the new version of the main dashboard?</h3>
+                    <span  className={styles.subtitle}>Takes 4 minutes to learn</span>
+                    <p  className={styles.desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Corrupti iure ea fugit sint blanditiis perferendis consequuntur</p>
+                    <button  className={styles.button}>
+                        <MdPlayCircleFilled/>
+                        Watch
+                    </button>
+                </div>
+            </div>
+            <div className={styles.item}>
+                <div className={styles.text}>
+                    <span className={styles.notification}>Coming soon</span>
+                    <h3  className={styles.title}>How to use the new version of the main dashboard?</h3>
+                    <span  className={styles.subtitle}>Takes 4 minutes to learn</span>
+                    <p  className={styles.desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Corrupti iure ea fugit sint blanditiis perferendis consequuntur</p>
+                    <button  className={styles.button}>
+                        <MdReadMore/>
+                        Learn
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
