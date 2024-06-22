@@ -1,9 +1,10 @@
 import React from 'react'
 import sytles from "@/app/ui/dashboard/products/addProduct/addProduct.module.css"
+import { addProduct } from '@/app/lib/actions'
 const AddProductPage = () => {
     return(
         <div className={sytles.container}>
-            <form action="" className={sytles.form}>
+            <form action={addProduct} className={sytles.form}>
                 <input type="text " placeholder='title' name="title" required />
                 <select name="cat" id="cat">
                     <option value="general">Choose a category</option>
