@@ -1,34 +1,39 @@
+import { updateProduct } from "@/app/lib/actions"
+import { fetchProduct } from "@/app/lib/data"
 import styles from "@/app/ui/dashboard/products/singleProduct/singleProduct.module.css"
 import Image from "next/image"
-const SingleProductPage = () => {
+const SingleProductPage = async ({params}) => {
+    const {id} = params
+    const product = fetchProduct(id)
     return(
         <div>
             <div className={styles.container}>
                 <div className={styles.infoContainer}>
                     <div className={styles.imgContainer}>
-                        <Image src="/noavatar.png" alt="" fill />
+                        <Image src={product.img || "/noavatar.png"} alt="" fill />
                     </div>
-                    Iphone
+                    {product.title}
                 </div>
                 <div className={styles.formContainer}>
-                    <form action="" className={styles.form}>
+                    <form action={updateProduct} className={styles.form}>
+                    <input type="hidden" name="id" value={product.id} />
                         <label >Title</label>
-                        <input type="text" name="title" placeholder="John doe" />
+                        <input type="text" name="title" placeholder={product.title} />
                         <label >Price</label>
-                        <input type="number" name="price" placeholder="$123" />
+                        <input type="number" name="price" placeholder={product.price} />
                         <label >Stock</label>
-                        <input type="number" name="stock" placeholder="red" />
+                        <input type="number" name="stock" placeholder={product.stock} />
                         <label >Color</label>
-                        <input type="text" name="color" placeholder="" />
+                        <input type="text" name="color" placeholder={product.color} />
                         <label >Size</label>
-                        <input type="text" name="size" placeholder="New York"/>
+                        <input type="text" name="size" placeholder={product.size}/>
                         <label>Cat</label>
                         <select name="cat" id="cat" >
                             <option value="kitchne">Kitchen</option>
                             <option value="computers">Computers</option>
                         </select>
                         <label>Description</label>
-                        <textarea name="desc" id="desc" rows="10" placeholder="description"></textarea>
+                        <textarea name="desc" id="desc" rows="10" placeholder={product.desc}></textarea>
                         <button>Update</button>
                     </form>
                 </div>
