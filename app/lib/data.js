@@ -44,10 +44,10 @@ export const fetchProducts = async (q, page)=>{
 export const fetchProduct = async (id)=>{
     try {
         connectToDB()
-        const product = await User.findById(id)
+        const product = await Product.findById(id)
         return product
     } catch (error) {
         console.log(error)
-        throw new Error("Failed to fetch user!")
+        throw new Error("Failed to fetch product!")
     }
 }
