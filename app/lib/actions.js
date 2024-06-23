@@ -4,6 +4,7 @@ import {User,Product} from './models'
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 import bcrypt from 'bcrypt'
+import { signIn } from "../auth"
 
 export const addUser = async (formData) =>{
     const {username, email, password, phone, address, isAdmin, isActive} = Object.fromEntries(formData)
@@ -103,3 +104,13 @@ export const deleteUser = async (formData) =>{
     }
     revalidatePath("/dashboard/users")
 }
+
+export const authenticate = async (prevState, formData) => {
+    const { username, password } = Object.fromEntries(formData);
+  
+    try {
+      await signIn("credentials", { username, password });
+    } catch (err) {
+      return "wrong credentials"
+    }
+  };
